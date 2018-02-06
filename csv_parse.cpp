@@ -19,7 +19,8 @@ void csvParse::parse()
   _file.open(_fileName.c_str(),std::ifstream::in);
   if(!_file)
   {
-   std::cout<<"Error no such file exists"<<std::endl;
+    std::cout<<"Error no such file exists"<<std::endl;
+    std::cout<<"Error no such file exists"<<std::endl;
   }
   //now read line by line
   std::string line;
