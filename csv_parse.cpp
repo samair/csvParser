@@ -7,7 +7,7 @@ char comma_str =',';
 // number of rows/colums etc.
 
 csvParse::csvParse(std::string csvFileName):
-                 _fileName(csvFileName)
+                 _fileName(csvFileName),_numRows(0)
 {
   //kick parsing 
   parse();
@@ -20,22 +20,19 @@ void csvParse::parse()
   if(!_file)
   {
     std::cout<<"Error no such file exists"<<std::endl;
-    std::cout<<"Error no such file exists"<<std::endl;
   }
   //now read line by line
   std::string line;
+  bool isFirstColumn = false;
   while(std::getline(_file,line))
   {
-   
    //first row of the file separated by comma's are column names
-   _columnNames = parseRow(line);
-   stringVector::iterator strVectItr;
-   for(strVectItr = _columnNames.begin(); strVectItr!=_columnNames.end(); ++strVectItr)
-    {
-      std::cout<<" " <<*strVectItr<<" " ;
-    }
-     std::cout<<std::endl;
-   break;
+   if (!isFirstColumn)
+     {
+       _columnNames = parseRow(line);
+       isFirstColumn = true;
+     }
+   ++_numRows ;
   }
   _file.close();
    

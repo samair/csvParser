@@ -14,6 +14,9 @@ class csvParse{
    std::string _fileName;  
    //Internal file stream
    std::ifstream _file;
+
+   //Number of rows in the csv file
+   unsigned int _numRows;
    
    void parse();
 
@@ -27,7 +30,12 @@ class csvParse{
    csvParse(std::string fileName);
 
    //parse columns
-   std::string columns();
+   inline stringVector getColumns()
+   {return _columnNames;} 
+
+   //get number of rows in the csv file
+   inline unsigned int getNumRows()
+   { return _numRows;}
 
 };
 #endif //_CSV_PARSE_
