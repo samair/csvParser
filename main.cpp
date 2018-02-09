@@ -14,5 +14,6 @@ int main()
      {
         std::cout<<*strItr<<std::endl;
      }
+   stringVector strColumsn = _csvFile["Name"];
 
 }

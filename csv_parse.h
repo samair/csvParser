@@ -21,6 +21,8 @@ class csvParse{
    void parse();
 
    stringVector parseRow(std::string, size_t commaPos=0);
+
+   void parseColumn(stringVector&,unsigned int);
    
    stringVector _columnNames;
 
@@ -28,6 +30,9 @@ class csvParse{
    public:
    //take input csvFile
    csvParse(std::string fileName);
+
+   //Overload [] operator so that we can access colums in that fashion.
+   stringVector operator[](const std::string& str);
 
    //parse columns
    inline stringVector getColumns()
